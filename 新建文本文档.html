@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WWZ-AV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 45%;
+            margin: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .product img {
+            width: 100%;
+            height: auto;
+            max-height: 300px;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        .product h2 {
+            margin-bottom: 10px;
+        }
+        .product button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .product button:hover {
+            background-color: #0056B3;
+        }
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            background-color: white;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+        }
+        .modal h3 {
+            margin-top: 0;
+        }
+        .modal button {
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .modal button:hover {
+            background-color: #0056B3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="product-container">
+        <div class="product">
+            <img src="https://tbi.sb-cd.com/t/13959319/1/3/w:1280/t6-enh/c0e0-com.jpg" alt="精品">
+            <h2>迷彩特工</h2>
+            <button onclick="showConfirmation('https://vdownload-50.sb-cd.com/1/3/13959319-1080p.mp4?secure=9lubi2mMLqA0YskD1R9_AQ,1710072021&m=50&d=1&_tid=13959319')">观看</button>
+        </div>
+        <div class="product">
+            <img src="https://tbi.sb-cd.com/t/8810212/8/8/w:1280/t2-enh/porn.jpg" alt="精品">
+            <h2>樱花树下</h2>
+            <button onclick="showConfirmation('https://vdownload-43.sb-cd.com/1/3/13434722-1080p.mp4?secure=F4Qymj8ePH3ELqo5e7wT5g,1710072323&m=43&d=1&_tid=13434722')">观看</button>
+        </div>
+        <div class="product">
+            <img src="https://tbi.sb-cd.com/t/13447542/1/3/w:1280/t6-enh/hhd800-com-hongkongdoll-hkd.jpg" alt="精品">
+            <h2>落日余晖</h2>
+            <button onclick="showConfirmation('https://vdownload-43.sb-cd.com/1/3/13447542-720p.mp4?secure=d_4sDt4smAZVfMjnfj8tng,1710072491&m=43&d=1&_tid=13447542')">观看</button>
+        </div>
+        <div class="product">
+            <img src="	https://tbi.sb-cd.com/t/9471167/9/4/w:1280/t6-enh/hongkongdoll-3.jpg" alt="精品">
+            <h2>她是谁</h2>
+            <button onclick="showConfirmation('https://vdownload-32.sb-cd.com/9/4/9471167-480p.mp4?secure=COuL8fQ2RmjaEb3kxYsX7g,1710072656&m=32&d=6&_tid=9471167')">观看</button>
+        </div>
+    </div>
+    <div class="modal" id="confirmation-modal" style="display: none;">
+        <h3>警告</h3>
+        <p>本站资源均由网络收集，本站所有者（WWZ）不对其负任何法律责任！望周知！</p>
+        <button onclick="closeModal()">我已阅读</button>
+    </div>
+    <script>
+        var activationCode = prompt("请输入激活码：");
+        if (activationCode !== "wwz-112233445566") {
+            alert("激活码错误，跳转到百度首页");
+            window.location.href = "http://www.baidu.com";
+        }
+        function showConfirmation(url) {
+            let modal = document.getElementById('confirmation-modal');
+            modal.style.display = 'block';
+            modal.onclick = function (event) {
+                event.stopPropagation();
+            };
+            document.body.style.overflow = 'hidden';
+
+            let closeButton = modal.querySelector('button');
+            closeButton.onclick = function () {
+                closeModal();
+                window.location.href = url;
+            };
+        }
+        function closeModal() {
+            let modal = document.getElementById('confirmation-modal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        function appendProducts() {
+            let container = document.getElementById('product-container');
+            let products = container.innerHTML;
+            container.innerHTML += products;
+        }
+        function showSecretWindow() {
+            let secretModal = document.createElement('div');
+            secretModal.classList.add('modal', 'shake');
+            secretModal.innerHTML = `
+                <h3>美国有P站 中国有此站</h3>
+                <p>坐拥千万影库 尽享极致体验</p>
+                <button onclick="closeSecretModal()">我认为此站已全面超越P站</button>
+            `;
+            document.body.appendChild(secretModal);
+        }
+        function closeSecretModal() {
+            let secretModal = document.querySelector('.shake');
+            secretModal.remove();
+        }
+        window.onscroll = function () {
+            let scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            let windowHeight = document.documentElement.clientHeight || document.body.clientHeight;
+            let scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+            if (scrollTop + windowHeight >= scrollHeight) {
+                appendProducts();
+            }
+        };
+        // Call the activation function
+        showSecretWindow();
+    </script>
+</body>
+</html>
